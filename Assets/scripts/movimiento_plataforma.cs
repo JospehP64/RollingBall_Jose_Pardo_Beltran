@@ -27,6 +27,7 @@ public class movimiento_plataforma : MonoBehaviour
         if (Timer >= 3)
         {
             direccion *= -1f;
+            Timer = 0;
         }
     }
     void rotate()
