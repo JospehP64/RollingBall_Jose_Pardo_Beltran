@@ -24,7 +24,7 @@ public class movimiento_plataforma : MonoBehaviour
         transform.Translate(direccion * velocidad * Time.deltaTime);
         transform.Rotate(dirRota * velRota * Time.deltaTime, Space.World);
         Timer += 1 * Time.deltaTime;
-        if (Timer >= 5)
+        if (Timer >= 3)
         {
             direccion *= -1f;
         }
