@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class movimiento_esfera : MonoBehaviour
 {
+    Vector3 direccion;
+    float velocidad;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,10 @@ public class movimiento_esfera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float h = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+        transform.position = new Vector3 (1, 0, 0);
         movimiento();
+        
     }
     void movimiento()
     {
@@ -25,10 +30,14 @@ public class movimiento_esfera : MonoBehaviour
         {
             transform.position += new Vector3(0, 0, 1 * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(0, 0, 1 * Time.deltaTime);
+            transform.position += new Vector3(1, 0, 0 * Time.deltaTime);
         }
-
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += new Vector3(-1, 0, 0 * Time.deltaTime);
+        }
+        
     }
 }
