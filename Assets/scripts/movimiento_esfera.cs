@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class movimiento_esfera : MonoBehaviour
 {
+
+    Rigidbody rb;
     Vector3 direccion;
     float velocidad;
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
-        transform.position = new Vector3 (1, 0, 0);
-        movimiento();
+       float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
         
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb = GetComponent<Rigidbody>();
+            rb.AddForce(0,1,0 * 5, ForceMode.Force);
+        }
+       // transform.position = new Vector3 (1, 0, 0);
+       // movimiento();
+
     }
     void movimiento()
     {
