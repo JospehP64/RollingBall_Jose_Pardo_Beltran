@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class movimiento_esfera : MonoBehaviour
@@ -11,42 +12,35 @@ public class movimiento_esfera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+       float h = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+        float v = Input.GetAxisRaw("Vertical") * Time.deltaTime;
+        float Movh = h * velocidad;
+        rb.velocity = new Vector2(Movh, rb.velocity.x);
         
+        
+
+
         if (Input.GetKey(KeyCode.Space))
         {
-            rb = GetComponent<Rigidbody>();
+            
             rb.AddForce(0,1,0 * 5, ForceMode.Force);
         }
-       // transform.position = new Vector3 (1, 0, 0);
-       // movimiento();
+        //transform.position = new Vector3 (1, 0, 0);
+        //movimiento();
 
     }
-    void movimiento()
+    
+    private void OnCollisionEnter(Collision collision)
     {
-        if (Input.GetKey(KeyCode.W))
+        if (collision.gameObject.CompareTag("moneda"))
         {
-            transform.position += new Vector3 (0,0,-1 * Time.deltaTime);
+            Destroy(collision.gameObject);
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += new Vector3(0, 0, 1 * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(1, 0, 0 * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += new Vector3(-1, 0, 0 * Time.deltaTime);
-        }
-        
     }
 }
