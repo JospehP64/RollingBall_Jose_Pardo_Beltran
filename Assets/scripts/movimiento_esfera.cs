@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class movimiento_esfera : MonoBehaviour
 {
-
+    [SerializeField] TMP_Text score_Text;
     Rigidbody rb;
     Vector3 direccion;
     float velocidad;
     // Start is called before the first frame update
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
     }
 
@@ -41,6 +43,7 @@ public class movimiento_esfera : MonoBehaviour
         if (collision.gameObject.CompareTag("moneda"))
         {
             Destroy(collision.gameObject);
+            //score_Text = Set.
         }
     }
 }
