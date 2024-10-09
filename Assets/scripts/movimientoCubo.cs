@@ -15,7 +15,7 @@ public class movimientoCubo : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         //transform.eulerAngles = new Vector3(0f, 1f, 0f) * 10 * Time.deltaTime;
-       rb.AddTorque(new Vector3 (0, 1, 0)* 2, ForceMode.VelocityChange);
+       rb.AddTorque(new Vector3 (0, 1, 0)* 3, ForceMode.VelocityChange);
     }
 
     // Update is called once per frame
