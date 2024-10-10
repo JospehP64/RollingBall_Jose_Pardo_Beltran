@@ -45,5 +45,9 @@ public class movimiento_esfera : MonoBehaviour
             Destroy(collision.gameObject);
             //score_Text = Set.
         }
+        if (collision.gameObject.CompareTag("CLateral"))
+        {
+
+        }
     }
 }
