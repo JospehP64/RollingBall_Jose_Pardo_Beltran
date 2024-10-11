@@ -8,8 +8,12 @@ public class movimiento_esfera : MonoBehaviour
 {
     [SerializeField] TMP_Text score_Text;
     Rigidbody rb;
-    Vector3 direccion;
-    float velocidad;
+    Vector3 movimiento;
+    [SerializeField] float velocidad;
+    Vector3 salto = new Vector3(0f,1,0f);
+
+    public float Velocidad { get => velocidad; set => velocidad = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +24,13 @@ public class movimiento_esfera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       float h = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
-        float v = Input.GetAxisRaw("Vertical") * Time.deltaTime;
-        float Movh = h * velocidad;
-        rb.velocity = new Vector2(Movh, rb.velocity.x);
+        //movimiento con GetAxisRaw y translate
+       float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        movimiento = new Vector3(h, 0f, v);
+        movimiento =  movimiento * velocidad * Time.deltaTime;
+        transform.Translate(movimiento);
         
         
 
@@ -31,10 +38,9 @@ public class movimiento_esfera : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             
-            rb.AddForce(0,1,0 * 5, ForceMode.Force);
+            rb.AddForce(salto * 0.5f , ForceMode.Impulse);
         }
-        //transform.position = new Vector3 (1, 0, 0);
-        //movimiento();
+        
 
     }
     
