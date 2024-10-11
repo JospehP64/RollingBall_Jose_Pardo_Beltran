@@ -38,7 +38,7 @@ public class movimiento_esfera : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             
-            rb.AddForce(salto * 0.5f , ForceMode.Impulse);
+            rb.AddForce(salto * 0.1f , ForceMode.Impulse);
         }
         
 
