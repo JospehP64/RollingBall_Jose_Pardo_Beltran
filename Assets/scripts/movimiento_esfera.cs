@@ -6,11 +6,15 @@ using TMPro;
 
 public class movimiento_esfera : MonoBehaviour
 {
+    RaycastHit impact;
+    Vector3 direccion = new Vector3(0f,-10f,0f);
+    
     [SerializeField] TMP_Text score_Text;
     Rigidbody rb;
     Vector3 movimiento;
     [SerializeField] float velocidad;
-    Vector3 salto = new Vector3(0f,1,0f);
+    Vector3 salto = new Vector3(0f,0.5f,0f);
+
 
     public float Velocidad { get => velocidad; set => velocidad = value; }
 
@@ -24,8 +28,15 @@ public class movimiento_esfera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Ray raycast = new Ray(transform.position, direccion);
+        
+        //Debug.DrawRay(transform.position, direccion * 2, Color.red);
+        //if (Physics.Raycast out impact){ }
+
+        
+
         //movimiento con GetAxisRaw y translate
-       float h = Input.GetAxisRaw("Horizontal");
+        float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
         movimiento = new Vector3(h, 0f, v);
@@ -37,9 +48,17 @@ public class movimiento_esfera : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
+            if (Physics.Raycast(transform.position, direccion, 1))
+            {
+                rb.AddForce(salto * 0.1f, ForceMode.Impulse);
+            }
+            else
+            {
+                
+            }
             
-            rb.AddForce(salto * 0.1f , ForceMode.Impulse);
         }
+        
         
 
     }
@@ -56,4 +75,5 @@ public class movimiento_esfera : MonoBehaviour
 
         }
     }
+    
 }
