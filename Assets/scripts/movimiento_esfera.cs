@@ -44,6 +44,7 @@ public class movimiento_esfera : MonoBehaviour
         transform.Translate(movimiento);
         
         
+        
 
 
         if (Input.GetKey(KeyCode.Space))
@@ -58,7 +59,14 @@ public class movimiento_esfera : MonoBehaviour
             }
             
         }
-        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            velocidad = 10 * Time.deltaTime;
+        }
+        else
+        {
+            velocidad = 1;
+        }
         
 
     }
