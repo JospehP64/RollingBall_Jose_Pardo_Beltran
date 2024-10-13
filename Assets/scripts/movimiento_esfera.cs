@@ -40,8 +40,10 @@ public class movimiento_esfera : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         movimiento = new Vector3(h, 0f, v);
+        velocidad = 3;
         movimiento =  movimiento * velocidad * Time.deltaTime;
-        transform.Translate(movimiento);
+       // transform.Translate(movimiento);
+       rb.AddForce(new Vector3 (h, 0f, v));
         
         
         
