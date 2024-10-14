@@ -6,6 +6,8 @@ using TMPro;
 
 public class movimiento_esfera : MonoBehaviour
 {
+    AudioManager Manager;
+    AudioClip Miclip;
     RaycastHit impact;
     Vector3 direccion = new Vector3(0f,-10f,0f);
     
@@ -79,6 +81,9 @@ public class movimiento_esfera : MonoBehaviour
         {
             Destroy(collision.gameObject);
             //score_Text = Set.
+            
+
+            
         }
         if (collision.gameObject.CompareTag("CLateral"))
         {
