@@ -56,7 +56,7 @@ public class movimiento_esfera : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, direccion, raycastSize))
             {
-                rb.AddForce(salto * 5f, ForceMode.Impulse);
+                rb.AddForce(salto * 10f, ForceMode.Impulse);
             }
             else
             {
@@ -66,11 +66,12 @@ public class movimiento_esfera : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            velocidad = 10 * Time.deltaTime;
+            //velocidad = 10;
+            Time.timeScale = 0.3f;
         }
         else
         {
-            velocidad = 1;
+            Time.timeScale = 1.0f;
         }
         
 
