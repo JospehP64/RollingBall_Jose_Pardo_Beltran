@@ -8,6 +8,7 @@ public class movimiento_esfera : MonoBehaviour
 {
     AudioManager Manager;
     AudioClip Miclip;
+    float raycastSize = 0.21f;
     RaycastHit impact;
     Vector3 direccion = new Vector3(0f,-10f,0f);
     
@@ -53,7 +54,7 @@ public class movimiento_esfera : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics.Raycast(transform.position, direccion, 0.21f))
+            if (Physics.Raycast(transform.position, direccion, raycastSize))
             {
                 rb.AddForce(salto * 5f, ForceMode.Impulse);
             }
