@@ -19,7 +19,7 @@ public class MuroScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Time.timeScale = 0.1f;
+            Time.timeScale = 0.3f;
         }
     }
 }

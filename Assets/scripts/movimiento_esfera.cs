@@ -51,11 +51,11 @@ public class movimiento_esfera : MonoBehaviour
         
 
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics.Raycast(transform.position, direccion, 1))
+            if (Physics.Raycast(transform.position, direccion, 0.21f))
             {
-                rb.AddForce(salto * 0.1f, ForceMode.Impulse);
+                rb.AddForce(salto * 5f, ForceMode.Impulse);
             }
             else
             {
