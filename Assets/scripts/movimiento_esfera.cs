@@ -6,7 +6,9 @@ using TMPro;
 
 public class movimiento_esfera : MonoBehaviour
 {
-    int MonedaCubo = 1;
+    [SerializeField]int saludCubo = 3;
+    int MonedaCubo = 0;
+
     AudioManager Manager;
     AudioClip Miclip;
     float raycastSize = 0.21f;
@@ -21,6 +23,7 @@ public class movimiento_esfera : MonoBehaviour
 
 
     public float Velocidad { get => velocidad; set => velocidad = value; }
+    public int SaludCubo { get => saludCubo; set => saludCubo = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -80,14 +83,15 @@ public class movimiento_esfera : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("moneda"))
-        {
-            Destroy(collision.gameObject);
+        //if (collision.gameObject.CompareTag("moneda"))
+        //{
+        //    Destroy(collision.gameObject);
             //score_Text = Set.
             
 
             
-        }
+        //}
+        //Nota: en el caso de las monedas, si se quiere atravesar las monedas y al mismo tiempo tocarlas, usar un "OntriggerEnter" en su lugar
         if (collision.gameObject.CompareTag("CLateral"))
         {
 
@@ -97,5 +101,14 @@ public class movimiento_esfera : MonoBehaviour
             transform.position = new Vector3(-36.84f,10.98f ,-26.09f );
         }
     }
-    
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("moneda"))
+        {
+            Destroy(collider.gameObject);
+            MonedaCubo++;
+        }
+    }
+
+
 }
