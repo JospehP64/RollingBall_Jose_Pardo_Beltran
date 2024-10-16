@@ -6,6 +6,7 @@ using TMPro;
 
 public class movimiento_esfera : MonoBehaviour
 {
+    int MonedaCubo = 1;
     AudioManager Manager;
     AudioClip Miclip;
     float raycastSize = 0.21f;
@@ -90,6 +91,10 @@ public class movimiento_esfera : MonoBehaviour
         if (collision.gameObject.CompareTag("CLateral"))
         {
 
+        }
+        if (collision.gameObject.CompareTag("vacio"))
+        {
+            transform.position = new Vector3(-36.84f,10.98f ,-26.09f );
         }
     }
     

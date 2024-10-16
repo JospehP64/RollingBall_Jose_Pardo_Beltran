@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MuroScript : MonoBehaviour
 {
+    [SerializeField] Rigidbody[] rb;
+    float tiempoDestruyeMuros;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +16,14 @@ public class MuroScript : MonoBehaviour
     void Update()
     {
         
+
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             //Time.timeScale = 0.1f;
+            tiempoDestruyeMuros = 0.1f;
         }
     }
 }
