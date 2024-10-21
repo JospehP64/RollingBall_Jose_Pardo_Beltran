@@ -98,7 +98,7 @@ public class movimiento_esfera : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("vacio"))
         {
-            transform.position = new Vector3(-36.84f,10.98f ,-26.09f );
+            transform.position = new Vector3(-96.296f, 37.356f, -58.89f);
         }
     }
     private void OnTriggerEnter(Collider collider)
