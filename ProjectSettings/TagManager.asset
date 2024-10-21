@@ -7,6 +7,7 @@ TagManager:
   - moneda
   - CLateral
   - vacio
+  - flag
   layers:
   - Default
   - TransparentFX

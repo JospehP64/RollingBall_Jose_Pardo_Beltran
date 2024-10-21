@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6389011530678132875}
   - component: {fileID: 4372651113538023183}
   m_Layer: 0
-  m_Name: Cubo_Rotatorio
+  m_Name: cubo_de_oro
   m_TagString: moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 02e3a981c2e9299458e96b97ed53f1d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

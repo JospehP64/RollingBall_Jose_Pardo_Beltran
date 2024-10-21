@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7023114174389658335}
   - component: {fileID: 3450206832703503225}
   m_Layer: 0
-  m_Name: Tabla
+  m_Name: Tabla de madera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ed2689354742a446b3b92cab6b8935c, type: 2}
+  - {fileID: 2100000, guid: 0a5a0929b2529474c84855d152f1baeb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
