@@ -6,7 +6,14 @@ using TMPro;
 
 public class movimiento_esfera : MonoBehaviour
 {
-    [SerializeField]int saludCubo = 3;
+    [SerializeField] TextMeshProUGUI Textvida;
+    [SerializeField] TextMeshProUGUI TextEnergia;
+    [SerializeField] TextMeshProUGUI TextMoneda;
+
+    int vida = 3;
+    int energia = 100;
+
+    
     int MonedaCubo = 0;
 
     AudioManager Manager;
@@ -35,6 +42,10 @@ public class movimiento_esfera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Textvida.SetText("Vida: " + vida);
+        TextEnergia.SetText("Energía: " + energia);
+        TextEnergia.SetText("Monedas Cubo: " + MonedaCubo);
+
         Ray raycast = new Ray(transform.position, direccion);
         
         //Debug.DrawRay(transform.position, direccion * 2, Color.red);
