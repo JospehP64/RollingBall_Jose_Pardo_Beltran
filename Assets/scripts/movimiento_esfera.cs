@@ -11,7 +11,7 @@ public class movimiento_esfera : MonoBehaviour
     [SerializeField] TextMeshProUGUI TextMoneda;
 
     int vida = 3;
-    int energia = 100;
+    int energia = 99;
 
     
     int MonedaCubo = 0;
@@ -30,7 +30,7 @@ public class movimiento_esfera : MonoBehaviour
 
 
     public float Velocidad { get => velocidad; set => velocidad = value; }
-    public int SaludCubo { get => saludCubo; set => saludCubo = value; }
+    
 
     // Start is called before the first frame update
     void Start()

@@ -10712,7 +10712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Textvida: {fileID: 1636275077}
   TextEnergia: {fileID: 1586529411}
-  saludCubo: 3
+  TextMoneda: {fileID: 1048443266}
   score_Text: {fileID: 0}
   velocidad: 1
 --- !u!54 &1300724006
