@@ -79,14 +79,23 @@ public class movimiento_esfera : MonoBehaviour
             }
             
         }
+        if (energia >= 1)
+        {
+
+        }
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //velocidad = 10;
             Time.timeScale = 0.3f;
+            energia-- ;
         }
         else
         {
             Time.timeScale = 1.0f;
+            if (energia <= 0 && energia <= 100)
+            {
+                energia++;
+            }
         }
         
 
