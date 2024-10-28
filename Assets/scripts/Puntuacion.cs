@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class Puntuacion : MonoBehaviour
 {
@@ -11,12 +13,15 @@ public class Puntuacion : MonoBehaviour
     [SerializeField] TextMeshProUGUI Scoregold;
     [SerializeField] TextMeshProUGUI ScoreScore;
     [SerializeField] TextMeshProUGUI RankText;
+    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1;
+        esfera = FindObjectOfType<movimiento_esfera>();
     }
 
     // Update is called once per frame
@@ -24,9 +29,8 @@ public class Puntuacion : MonoBehaviour
     {
         ScoreVida.SetText("Puntos de vida restantes: " + esfera.Vida);
         Scoregold.SetText("Monedas recolectadas: " + esfera.MonedaCubo1);
-        ScoreVida.SetText("Puntos de vida restantes: " + esfera.Vida);
         PuntuacionFinal = esfera.MonedaCubo1 * esfera.Vida;
-        ScoreScore.SetText("Puntuación total" + PuntuacionFinal);
+        ScoreScore.SetText("Puntuación total: " + PuntuacionFinal);
          if (PuntuacionFinal > 70 && PuntuacionFinal <= 100 || PuntuacionFinal >= 100)
         {
             RankText.color = Color.yellow;
@@ -42,7 +46,7 @@ public class Puntuacion : MonoBehaviour
             RankText.color = Color.cyan;
             RankText.SetText("B");
         }
-        else if (PuntuacionFinal > 0 && PuntuacionFinal <= 20)
+        else if (PuntuacionFinal >= 10 && PuntuacionFinal <= 20)
         {
             RankText.SetText("C");
             RankText.color = Color.green;
@@ -53,4 +57,15 @@ public class Puntuacion : MonoBehaviour
             RankText.color = Color.red;
         }
     }
+    public void Reinicio()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void MenuPrincipal()
+    {
+        SceneManager.LoadScene(0);
+        
+    }
+    
+
 }

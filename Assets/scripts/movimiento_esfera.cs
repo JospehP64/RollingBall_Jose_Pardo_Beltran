@@ -4,15 +4,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class movimiento_esfera : MonoBehaviour
 {
+    [SerializeField]bool HasLlegadoALaMeta = false;
     [SerializeField] TextMeshProUGUI Textvida;
     [SerializeField] TextMeshProUGUI TextEnergia;
     [SerializeField] TextMeshProUGUI TextMoneda;
     [SerializeField]Canvas canvasPuntuacion;
+    [SerializeField]Canvas canvasGameOver;
+    [SerializeField]Canvas canvasJuego;
+    [SerializeField]Canvas canvasPausa;
+
     [SerializeField]RawImage RI;
 
+    
     [SerializeField]int vida = 3;
     bool energiaActivada = false;
 
@@ -40,6 +47,12 @@ public class movimiento_esfera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvasPausa.enabled = false;
+        canvasJuego.enabled = true;
+        canvasGameOver.enabled = false;
+        canvasPuntuacion.enabled = false;
+
+        HasLlegadoALaMeta = false;
         canvasPuntuacion.enabled = false;
         RI.enabled = false;
         rb = GetComponent<Rigidbody>();
@@ -48,6 +61,31 @@ public class movimiento_esfera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa == false)
+        {
+            Time.timeScale = 0;
+            canvasPausa.enabled = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa == true)
+        {
+            Time.timeScale = 1;
+            canvasPausa.enabled = false;
+        }
+
+
+            GameOver();
+
+        if (HasLlegadoALaMeta == true)
+        {
+            canvasPuntuacion.enabled = true;
+            Time.timeScale = 0;
+        }
+        else
+        {
+
+        }
+
         Textvida.SetText("Vida: " + vida);
         if (energiaActivada == true)
         {
@@ -96,7 +134,7 @@ public class movimiento_esfera : MonoBehaviour
             
         }
         
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && HasLlegadoALaMeta == false)
         {
             energiaActivada = true;
             //velocidad = 10;
@@ -104,7 +142,7 @@ public class movimiento_esfera : MonoBehaviour
             RI.enabled = true;
 
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && HasLlegadoALaMeta == false)
         {
             energiaActivada = false;
             Time.timeScale = 1.0f;
@@ -133,11 +171,14 @@ public class movimiento_esfera : MonoBehaviour
         if (collision.gameObject.CompareTag("vacio"))
         {
             transform.position = new Vector3(-96.296f, 37.356f, -58.89f);
+            vida--;
         }
         if (collision.gameObject.CompareTag("flag"))
         {
-            Time.timeScale = 0f;
-            canvasPuntuacion.enabled = true;
+            
+            HasLlegadoALaMeta = true;
+            
+            
         }
     }
     private void OnTriggerEnter(Collider collider)
@@ -148,6 +189,26 @@ public class movimiento_esfera : MonoBehaviour
             MonedaCubo++;
         }
     }
+    void GameOver()
+    {
+    if (vida <= 0)
+        {
+            canvasJuego.enabled = false;
+            canvasGameOver.enabled = true;
+            Time.timeScale = 0;
+        }    
+    }
+    public void reanudar()
+    {
+        if (canvasPuntuacion.enabled == false || canvasGameOver.enabled == false || canvasPuntuacion.enabled == false && canvasGameOver.enabled == false || canvasPausa == true)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
 
+        }
+            
+    }
 
 }
