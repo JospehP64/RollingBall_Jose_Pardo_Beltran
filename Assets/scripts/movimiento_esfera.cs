@@ -10,9 +10,10 @@ public class movimiento_esfera : MonoBehaviour
     [SerializeField] TextMeshProUGUI Textvida;
     [SerializeField] TextMeshProUGUI TextEnergia;
     [SerializeField] TextMeshProUGUI TextMoneda;
+    [SerializeField]Canvas canvasPuntuacion;
     [SerializeField]RawImage RI;
 
-    int vida = 3;
+    [SerializeField]int vida = 3;
     bool energiaActivada = false;
 
     
@@ -32,11 +33,14 @@ public class movimiento_esfera : MonoBehaviour
 
 
     public float Velocidad { get => velocidad; set => velocidad = value; }
-    
+    public int Vida { get => vida; set => vida = value; }
+    public int MonedaCubo1 { get => MonedaCubo; set => MonedaCubo = value; }
+
 
     // Start is called before the first frame update
     void Start()
     {
+        canvasPuntuacion.enabled = false;
         RI.enabled = false;
         rb = GetComponent<Rigidbody>();
     }
@@ -129,6 +133,11 @@ public class movimiento_esfera : MonoBehaviour
         if (collision.gameObject.CompareTag("vacio"))
         {
             transform.position = new Vector3(-96.296f, 37.356f, -58.89f);
+        }
+        if (collision.gameObject.CompareTag("flag"))
+        {
+            Time.timeScale = 0f;
+            canvasPuntuacion.enabled = true;
         }
     }
     private void OnTriggerEnter(Collider collider)
