@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class movimiento_esfera : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI Textvida;
     [SerializeField] TextMeshProUGUI TextEnergia;
     [SerializeField] TextMeshProUGUI TextMoneda;
+    [SerializeField]RawImage RI;
 
     int vida = 3;
-    int energia = 99;
+    bool energiaActivada = false;
 
     
     int MonedaCubo = 0;
@@ -22,7 +24,7 @@ public class movimiento_esfera : MonoBehaviour
     RaycastHit impact;
     Vector3 direccion = new Vector3(0f,-10f,0f);
     
-    [SerializeField] TMP_Text score_Text;
+    
     Rigidbody rb;
     Vector3 movimiento;
     [SerializeField] float velocidad;
@@ -35,7 +37,7 @@ public class movimiento_esfera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        RI.enabled = false;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -43,8 +45,18 @@ public class movimiento_esfera : MonoBehaviour
     void Update()
     {
         Textvida.SetText("Vida: " + vida);
-        TextEnergia.SetText("Energía: " + energia);
-        TextEnergia.SetText("Monedas Cubo: " + MonedaCubo);
+        if (energiaActivada == true)
+        {
+            TextEnergia.SetText("Time control: Activado");
+            TextEnergia.color = Color.green;
+        }
+        else
+        {
+            TextEnergia.SetText("Time control: Descactivado");
+            TextEnergia.color = Color.red;
+        }
+        
+        TextMoneda.SetText("Monedas Cubo: " + MonedaCubo);
 
         Ray raycast = new Ray(transform.position, direccion);
         
@@ -79,23 +91,21 @@ public class movimiento_esfera : MonoBehaviour
             }
             
         }
-        if (energia >= 1)
-        {
-
-        }
+        
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            energiaActivada = true;
             //velocidad = 10;
             Time.timeScale = 0.3f;
-            energia-- ;
+            RI.enabled = true;
+
         }
         else
         {
+            energiaActivada = false;
             Time.timeScale = 1.0f;
-            if (energia <= 0 && energia <= 100)
-            {
-                energia++;
-            }
+            RI.enabled= false;
+
         }
         
 
