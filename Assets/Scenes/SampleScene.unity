@@ -485,7 +485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &41253485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12040,6 +12040,7 @@ MonoBehaviour:
   canvasPuntuacion: {fileID: 1869621559}
   canvasGameOver: {fileID: 1320479151}
   canvasJuego: {fileID: 41253488}
+  canvasPausa: {fileID: 744129380}
   RI: {fileID: 277753420}
   vida: 3
   velocidad: 1
@@ -12328,7 +12329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320479148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17313,7 +17314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1869621556
 RectTransform:
   m_ObjectHideFlags: 0

@@ -62,16 +62,12 @@ public class movimiento_esfera : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa.enabled == false)
         {
             Time.timeScale = 0;
             canvasPausa.enabled = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa == true)
-        {
-            Time.timeScale = 1;
-            canvasPausa.enabled = false;
-        }
+        
 
 
             GameOver();
@@ -134,7 +130,7 @@ public class movimiento_esfera : MonoBehaviour
             
         }
         
-        if (Input.GetKey(KeyCode.LeftShift) && HasLlegadoALaMeta == false)
+        if (Input.GetKey(KeyCode.LeftShift) && HasLlegadoALaMeta == false && canvasPausa.enabled == false)
         {
             energiaActivada = true;
             //velocidad = 10;
@@ -142,12 +138,16 @@ public class movimiento_esfera : MonoBehaviour
             RI.enabled = true;
 
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && HasLlegadoALaMeta == false)
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && HasLlegadoALaMeta == false && canvasPausa.enabled == false) 
         {
             energiaActivada = false;
             Time.timeScale = 1.0f;
             RI.enabled= false;
 
+        }
+        else
+        {
+            RI.enabled = false;
         }
         
 
@@ -203,6 +203,7 @@ public class movimiento_esfera : MonoBehaviour
         if (canvasPuntuacion.enabled == false || canvasGameOver.enabled == false || canvasPuntuacion.enabled == false && canvasGameOver.enabled == false || canvasPausa == true)
         {
             Time.timeScale = 1;
+            canvasPausa.enabled = false;
         }
         else
         {
