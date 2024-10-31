@@ -74,6 +74,7 @@ public class movimiento_esfera : MonoBehaviour
 
         if (HasLlegadoALaMeta == true)
         {
+            canvasJuego.enabled = false;
             canvasPuntuacion.enabled = true;
             Time.timeScale = 0;
         }
