@@ -19,7 +19,10 @@ public class movimiento_esfera : MonoBehaviour
 
     [SerializeField]RawImage RI;
 
-    
+    float h;
+    float v;
+
+
     [SerializeField]int vida = 3;
     bool energiaActivada = false;
 
@@ -58,6 +61,11 @@ public class movimiento_esfera : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    void FixedUpdate()
+    {
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -105,8 +113,7 @@ public class movimiento_esfera : MonoBehaviour
         
 
         //movimiento con GetAxisRaw y translate
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+         
 
         movimiento = new Vector3(h, 0f, v);
         velocidad = 3;
