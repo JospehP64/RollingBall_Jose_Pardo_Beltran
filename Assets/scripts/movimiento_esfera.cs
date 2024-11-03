@@ -65,6 +65,11 @@ public class movimiento_esfera : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
+        movimiento = new Vector3(h, 0f, v);
+        velocidad = 5;
+        movimiento = movimiento * velocidad;
+        // transform.Translate(movimiento);
+        rb.AddForce(new Vector3(h, 0f, v) * 5);
     }
     // Update is called once per frame
     void Update()
@@ -115,11 +120,7 @@ public class movimiento_esfera : MonoBehaviour
         //movimiento con GetAxisRaw y translate
          
 
-        movimiento = new Vector3(h, 0f, v);
-        velocidad = 3;
-        movimiento =  movimiento * velocidad * Time.deltaTime;
-       // transform.Translate(movimiento);
-       rb.AddForce(new Vector3 (h, 0f, v));
+        
         
         
         
@@ -143,6 +144,7 @@ public class movimiento_esfera : MonoBehaviour
             energiaActivada = true;
             //velocidad = 10;
             Time.timeScale = 0.3f;
+            rb.AddForce(new Vector3(h, 0f, v) * 2);
             RI.enabled = true;
 
         }
