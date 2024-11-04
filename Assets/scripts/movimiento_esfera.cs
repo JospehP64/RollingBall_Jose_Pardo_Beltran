@@ -197,6 +197,7 @@ public class movimiento_esfera : MonoBehaviour
         {
             Destroy(collider.gameObject);
             MonedaCubo++;
+
         }
     }
     void GameOver()
