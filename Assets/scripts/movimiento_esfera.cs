@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class movimiento_esfera : MonoBehaviour
 {
+    
     [SerializeField]bool HasLlegadoALaMeta = false;
     [SerializeField] TextMeshProUGUI Textvida;
     [SerializeField] TextMeshProUGUI TextEnergia;
@@ -61,20 +62,13 @@ public class movimiento_esfera : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
-    {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
-        movimiento = new Vector3(h, 0f, v);
-        velocidad = 5;
-        movimiento = movimiento * velocidad;
-        // transform.Translate(movimiento);
-        rb.AddForce(new Vector3(h, 0f, v) * 5);
-    }
     // Update is called once per frame
     void Update()
     {
         
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
+        movimiento = new Vector3(h, 0f, v);
         if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa.enabled == false)
         {
             Time.timeScale = 0;
@@ -83,7 +77,7 @@ public class movimiento_esfera : MonoBehaviour
         
 
 
-            GameOver();
+        GameOver();
 
         if (HasLlegadoALaMeta == true)
         {
@@ -162,6 +156,13 @@ public class movimiento_esfera : MonoBehaviour
         
 
     }
+    void FixedUpdate()
+    {
+        velocidad = 5;
+        movimiento = movimiento * velocidad;
+        // transform.Translate(movimiento);
+        rb.AddForce(new Vector3(h, 0f, v) * 5);
+    }
     
     private void OnCollisionEnter(Collision collision)
     {
@@ -180,7 +181,7 @@ public class movimiento_esfera : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("vacio"))
         {
-            transform.position = new Vector3(-96.296f, 37.356f, -58.89f);
+            transform.position = new Vector3(-96.214f, 37.416f, -60.782f);
             vida--;
         }
         if (collision.gameObject.CompareTag("flag"))
@@ -202,7 +203,7 @@ public class movimiento_esfera : MonoBehaviour
     }
     void GameOver()
     {
-    if (vida <= 0)
+        if (vida <= 0)
         {
             canvasJuego.enabled = false;
             canvasGameOver.enabled = true;

@@ -20,10 +20,9 @@ public class AudioManager : MonoBehaviour
     {
         
     }
-    [SerializeField] AudioSource ReproducirSonido(AudioClip Miclip)
+    public void ReproducirSonido(AudioClip Miclip)
     {
         sfx.PlayOneShot(Miclip);
-        return sfx;
         
     }
 
