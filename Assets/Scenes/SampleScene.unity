@@ -6105,6 +6105,9 @@ MonoBehaviour:
   heart_ui_component: {fileID: 1312333984}
   Second_heart_ui_component: {fileID: 1146027917}
   Third_heart_ui_component: {fileID: 1205815364}
+  heart_texture:
+  - {fileID: 2800000, guid: 4f11dcd7e5a8f9746a1788b6625ce20b, type: 3}
+  - {fileID: 2800000, guid: d7dcce08034d43b49b0a17ceba15a613, type: 3}
 --- !u!1001 &565801822
 PrefabInstance:
   m_ObjectHideFlags: 0
