@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class movimiento_esfera : MonoBehaviour
 {
-    
+    AudioManager audioM;
     [SerializeField]bool HasLlegadoALaMeta = false;
     [SerializeField] TextMeshProUGUI Textvida;
     [SerializeField] TextMeshProUGUI TextEnergia;
@@ -24,7 +24,7 @@ public class movimiento_esfera : MonoBehaviour
     float v;
 
 
-    [SerializeField]int vida = 3;
+    int vida = 3;
     bool energiaActivada = false;
 
     
@@ -44,13 +44,15 @@ public class movimiento_esfera : MonoBehaviour
 
 
     public float Velocidad { get => velocidad; set => velocidad = value; }
-    public int Vida { get => vida; set => vida = value; }
+    
     public int MonedaCubo1 { get => MonedaCubo; set => MonedaCubo = value; }
+    public int Vida { get => vida; set => vida = value; }
 
 
     // Start is called before the first frame update
     void Start()
     {
+
         canvasPausa.enabled = false;
         canvasJuego.enabled = true;
         canvasGameOver.enabled = false;
@@ -94,15 +96,15 @@ public class movimiento_esfera : MonoBehaviour
         if (energiaActivada == true)
         {
             TextEnergia.SetText("Time control: Activado");
-            TextEnergia.color = Color.green;
+            //TextEnergia.color = Color.green;
         }
         else
         {
             TextEnergia.SetText("Time control: Descactivado");
-            TextEnergia.color = Color.red;
+            //TextEnergia.color = Color.red;
         }
         
-        TextMoneda.SetText("Monedas Cubo: " + MonedaCubo);
+        TextMoneda.SetText("" + MonedaCubo);
 
         Ray raycast = new Ray(transform.position, direccion);
         

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] AudioSource sfx;
-    
+    public AudioSource sfx;
 
-   
+    public AudioSource Sfx { get => sfx; set => sfx = value; }
+
+
+
 
     // Start is called before the first frame update
     void Start()
