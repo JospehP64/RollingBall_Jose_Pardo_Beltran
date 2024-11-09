@@ -14,4 +14,12 @@ public class MenuPrincipal : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Controles()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void Menu_principal()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

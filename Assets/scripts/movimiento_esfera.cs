@@ -19,6 +19,7 @@ public class movimiento_esfera : MonoBehaviour
     [SerializeField]Canvas canvasPausa;
 
     [SerializeField]RawImage RI;
+    
 
     float h;
     float v;
@@ -62,6 +63,7 @@ public class movimiento_esfera : MonoBehaviour
         canvasPuntuacion.enabled = false;
         RI.enabled = false;
         rb = GetComponent<Rigidbody>();
+        audioM = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -71,7 +73,7 @@ public class movimiento_esfera : MonoBehaviour
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
         movimiento = new Vector3(h, 0f, v);
-        if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa.enabled == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && canvasPausa.enabled == false && canvasPuntuacion.enabled == false)
         {
             Time.timeScale = 0;
             canvasPausa.enabled = true;
@@ -198,7 +200,10 @@ public class movimiento_esfera : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("moneda"))
         {
+            audioM.GetComponent<AudioSource>().Play();
             Destroy(collider.gameObject);
+            
+            //audioM.ReproducirSonido();
             MonedaCubo++;
 
         }
@@ -207,6 +212,7 @@ public class movimiento_esfera : MonoBehaviour
     {
         if (vida <= 0)
         {
+            audioM.GetComponent<AudioSource>().Stop();
             canvasJuego.enabled = false;
             canvasGameOver.enabled = true;
             Time.timeScale = 0;

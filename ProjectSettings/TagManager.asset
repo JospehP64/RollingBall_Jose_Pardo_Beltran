@@ -8,6 +8,7 @@ TagManager:
   - CLateral
   - vacio
   - flag
+  - AudioManager
   layers:
   - Default
   - TransparentFX
